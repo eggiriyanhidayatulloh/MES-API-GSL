@@ -1,0 +1,22 @@
+# Dependencies & Build Output
+node_modules/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Deployment Bundles & Runtime Installers (contains server credentials & binaries)
+deploy/
+
+# Local Scratch Scripts
+scratch_*.js
+
+# OS Files
+.DS_Store
+Thumbs.db

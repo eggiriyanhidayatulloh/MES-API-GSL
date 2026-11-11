@@ -1,0 +1,3868 @@
+{
+  "models": [
+    {
+      "modelCode": "MGZS_HEV_COM",
+      "modelName": "MGZS HEV COM",
+      "mappings": [
+        {
+          "carVarietyCode": "5001",
+          "vehicleCodePrefix": "MNTS1D030DL"
+        }
+      ],
+      "items": [
+        {
+          "ecuname": "FVCM",
+          "moduleid": "MP",
+          "partno": "12057836",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "XX",
+          "partno": "12057607",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "99",
+          "partno": "12209601",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "BM",
+          "partno": "12190768",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "01",
+          "partno": "12190790",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "00",
+          "partno": "12045161",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "95",
+          "partno": "12218728",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "02",
+          "partno": "12209549",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "MP",
+          "partno": "11582805",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "XX",
+          "partno": "11582807",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "99",
+          "partno": "12521322",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "BM",
+          "partno": "12116903",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "01",
+          "partno": "12163198",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "00",
+          "partno": "11457606",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "95",
+          "partno": "11457608",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "MP",
+          "partno": "11582806",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "XX",
+          "partno": "11582808",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "99",
+          "partno": "12521325",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "BM",
+          "partno": "12116904",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "01",
+          "partno": "12163198",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "00",
+          "partno": "11457607",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "95",
+          "partno": "11457609",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "MP",
+          "partno": "11635308",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "XX",
+          "partno": "11989510",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "99",
+          "partno": "12610937",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "BM",
+          "partno": "12525675",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "01",
+          "partno": "12208039",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "00",
+          "partno": "11528549",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "95",
+          "partno": "12164374",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "MP",
+          "partno": "11574128",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "XX",
+          "partno": "11574139",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "99",
+          "partno": "12570036",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "BM",
+          "partno": "12570035",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "01",
+          "partno": "12184695",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "00",
+          "partno": "11949539",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "95",
+          "partno": "12132299",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "02",
+          "partno": "12184697",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "90",
+          "partno": "11949524",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "MP",
+          "partno": "11599262",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "XX",
+          "partno": "11818432",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "99",
+          "partno": "11766829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "BM",
+          "partno": "11920744",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "01",
+          "partno": "11818430",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "95",
+          "partno": "11818431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "MP",
+          "partno": "11959792",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "XX",
+          "partno": "11886341",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "99",
+          "partno": "12646009",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "BM",
+          "partno": "12558920",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "01",
+          "partno": "12222305",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "00",
+          "partno": "11179112",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "95",
+          "partno": "12097509",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "MP",
+          "partno": "12208064",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "XX",
+          "partno": "12222839",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "99",
+          "partno": "12696195",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "BM",
+          "partno": "12203540",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "01",
+          "partno": "12245645",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "00",
+          "partno": "11770389",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "95",
+          "partno": "12207520",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "02",
+          "partno": "11968426",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "51",
+          "partno": "12245689",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "MP",
+          "partno": "11516106",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "XX",
+          "partno": "12078816",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "99",
+          "partno": "12690910",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "BM",
+          "partno": "12196732",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "01",
+          "partno": "12240778",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "00",
+          "partno": "10726371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "95",
+          "partno": "12172543",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "MP",
+          "partno": "11975369",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "XX",
+          "partno": "11974329",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "99",
+          "partno": "12538394",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "BM",
+          "partno": "12203600",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "01",
+          "partno": "12171087",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "00",
+          "partno": "11179792",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "95",
+          "partno": "11968044",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "MP",
+          "partno": "11969482",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "XX",
+          "partno": "12210355",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "99",
+          "partno": "12718829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "BM",
+          "partno": "12681521",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "95",
+          "partno": "12219443",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "51",
+          "partno": "12261058",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "52",
+          "partno": "12261059",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "61",
+          "partno": "12238964",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "MP",
+          "partno": "11434034",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "XX",
+          "partno": "12163633",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "99",
+          "partno": "12582340",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "BM",
+          "partno": "12584172",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "01",
+          "partno": "12201671",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "00",
+          "partno": "11594960",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "95",
+          "partno": "12024991",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "02",
+          "partno": "12163578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "03",
+          "partno": "12163579",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "04",
+          "partno": "12163583",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "05",
+          "partno": "12163617",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "06",
+          "partno": "12163620",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "07",
+          "partno": "12163629",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "MP",
+          "partno": "11987565",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "XX",
+          "partno": "12230094",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "99",
+          "partno": "12028012",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "BM",
+          "partno": "12028013",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "01",
+          "partno": "12273807",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "00",
+          "partno": "11890948",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "95",
+          "partno": "12032484",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "MP",
+          "partno": "12212532",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "XX",
+          "partno": "12211345",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "99",
+          "partno": "12620438",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "BM",
+          "partno": "12194927",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "01",
+          "partno": "12211348",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "00",
+          "partno": "11167655",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "95",
+          "partno": "11149403",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "MP",
+          "partno": "12271879",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "XX",
+          "partno": "12134252",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "99",
+          "partno": "12629030",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "BM",
+          "partno": "12629031",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "01",
+          "partno": "12238273",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "00",
+          "partno": "12132439",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "95",
+          "partno": "12132440",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "MP",
+          "partno": "11987604",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "XX",
+          "partno": "11963718",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "99",
+          "partno": "12602480",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "BM",
+          "partno": "12163110",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "01",
+          "partno": "12204389",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "00",
+          "partno": "11968468",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "95",
+          "partno": "11968467",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "MP",
+          "partno": "12059718",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "XX",
+          "partno": "12055436",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "99",
+          "partno": "12517617",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "BM",
+          "partno": "11192551",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "01",
+          "partno": "12162284",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "00",
+          "partno": "11203369",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "95",
+          "partno": "11794657",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "02",
+          "partno": "12024849",
+          "isDeleted": "0"
+        }
+      ]
+    },
+    {
+      "modelCode": "MGZS_HEV_LUX",
+      "modelName": "MGZS HEV LUX",
+      "mappings": [
+        {
+          "carVarietyCode": "5002",
+          "vehicleCodePrefix": "MNTS1G031D1"
+        },
+        {
+          "carVarietyCode": "5003",
+          "vehicleCodePrefix": "MNTS1G031DL"
+        }
+      ],
+      "items": [
+        {
+          "ecuname": "FVCM",
+          "moduleid": "MP",
+          "partno": "12057836",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "XX",
+          "partno": "12057607",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "99",
+          "partno": "12209601",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "BM",
+          "partno": "12190768",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "01",
+          "partno": "12190790",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "00",
+          "partno": "12045161",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "95",
+          "partno": "12218728",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "02",
+          "partno": "12209549",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "MP",
+          "partno": "11582805",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "XX",
+          "partno": "11582807",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "99",
+          "partno": "12521322",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "BM",
+          "partno": "12116903",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "01",
+          "partno": "12163198",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "00",
+          "partno": "11457606",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "95",
+          "partno": "11457608",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "MP",
+          "partno": "11582806",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "XX",
+          "partno": "11582808",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "99",
+          "partno": "12521325",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "BM",
+          "partno": "12116904",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "01",
+          "partno": "12163198",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "00",
+          "partno": "11457607",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "95",
+          "partno": "11457609",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "MP",
+          "partno": "11635308",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "XX",
+          "partno": "11989510",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "99",
+          "partno": "12610937",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "BM",
+          "partno": "12525675",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "01",
+          "partno": "12208039",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "00",
+          "partno": "11528549",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "95",
+          "partno": "12164374",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "MP",
+          "partno": "11574128",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "XX",
+          "partno": "11574139",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "99",
+          "partno": "12570036",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "BM",
+          "partno": "12570035",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "01",
+          "partno": "12184695",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "00",
+          "partno": "11949539",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "95",
+          "partno": "12132299",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "02",
+          "partno": "12184697",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "90",
+          "partno": "11949524",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "MP",
+          "partno": "11599262",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "XX",
+          "partno": "11818432",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "99",
+          "partno": "11766829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "BM",
+          "partno": "11920744",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "01",
+          "partno": "11818430",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "95",
+          "partno": "11818431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "MP",
+          "partno": "11959792",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "XX",
+          "partno": "11886341",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "99",
+          "partno": "12646009",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "BM",
+          "partno": "12558920",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "01",
+          "partno": "12222305",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "00",
+          "partno": "11179112",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "95",
+          "partno": "12097509",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "MP",
+          "partno": "12208064",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "XX",
+          "partno": "12222839",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "99",
+          "partno": "12696195",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "BM",
+          "partno": "12203540",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "01",
+          "partno": "12245645",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "00",
+          "partno": "11770389",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "95",
+          "partno": "12207520",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "02",
+          "partno": "11968426",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "51",
+          "partno": "12245689",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "MP",
+          "partno": "11516106",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "XX",
+          "partno": "12078816",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "99",
+          "partno": "12690910",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "BM",
+          "partno": "12196732",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "01",
+          "partno": "12240778",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "00",
+          "partno": "10726371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "95",
+          "partno": "12172543",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "MP",
+          "partno": "11975369",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "XX",
+          "partno": "11974329",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "99",
+          "partno": "12538394",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "BM",
+          "partno": "12203600",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "01",
+          "partno": "12171087",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "00",
+          "partno": "11179792",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "95",
+          "partno": "11968044",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "MP",
+          "partno": "11969482",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "XX",
+          "partno": "12210355",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "99",
+          "partno": "12718829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "BM",
+          "partno": "12681521",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "95",
+          "partno": "12219443",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "51",
+          "partno": "12261058",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "52",
+          "partno": "12261059",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "61",
+          "partno": "12238964",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "MP",
+          "partno": "11434034",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "XX",
+          "partno": "12163633",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "99",
+          "partno": "12582340",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "BM",
+          "partno": "12584172",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "01",
+          "partno": "12201671",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "00",
+          "partno": "11594960",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "95",
+          "partno": "12024991",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "02",
+          "partno": "12163578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "03",
+          "partno": "12163579",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "04",
+          "partno": "12163583",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "05",
+          "partno": "12163617",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "06",
+          "partno": "12163620",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "07",
+          "partno": "12163629",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "MP",
+          "partno": "11987565",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "XX",
+          "partno": "12230094",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "99",
+          "partno": "12028012",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "BM",
+          "partno": "12028013",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "01",
+          "partno": "12273807",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "00",
+          "partno": "11890948",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PICM",
+          "moduleid": "95",
+          "partno": "12032484",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "MP",
+          "partno": "12212532",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "XX",
+          "partno": "12211345",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "99",
+          "partno": "12620438",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "BM",
+          "partno": "12194927",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "01",
+          "partno": "12211348",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "00",
+          "partno": "11167655",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "95",
+          "partno": "11149403",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "MP",
+          "partno": "12271879",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "XX",
+          "partno": "12134252",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "99",
+          "partno": "12629030",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "BM",
+          "partno": "12629031",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "01",
+          "partno": "12238273",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "00",
+          "partno": "12132439",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HEVBMS",
+          "moduleid": "95",
+          "partno": "12132440",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "MP",
+          "partno": "11987604",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "XX",
+          "partno": "11963718",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "99",
+          "partno": "12602480",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "BM",
+          "partno": "12163110",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "01",
+          "partno": "12204389",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "00",
+          "partno": "11968468",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BAEOP",
+          "moduleid": "95",
+          "partno": "11968467",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "MP",
+          "partno": "12059718",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "XX",
+          "partno": "12055436",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "99",
+          "partno": "12517617",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "BM",
+          "partno": "11192551",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "01",
+          "partno": "12162284",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "00",
+          "partno": "11203369",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "95",
+          "partno": "11794657",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "02",
+          "partno": "12024849",
+          "isDeleted": "0"
+        }
+      ]
+    },
+    {
+      "modelCode": "MGS5_EV_COM_49",
+      "modelName": "MGS5 EV COM (49KWH)",
+      "mappings": [
+        {
+          "carVarietyCode": "3001",
+          "vehicleCodePrefix": "MMSL1C03VCL"
+        }
+      ],
+      "items": [
+        {
+          "ecuname": "BCM",
+          "moduleid": "BM",
+          "partno": "12155431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "00",
+          "partno": "10726371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "01",
+          "partno": "12030578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "95",
+          "partno": "11923593",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "99",
+          "partno": "12232068",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "BM",
+          "partno": "12114268",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "01",
+          "partno": "12061654",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "95",
+          "partno": "12178113",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "99",
+          "partno": "12292929",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "BM",
+          "partno": "12059188",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "00",
+          "partno": "11686661",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "01",
+          "partno": "11903711",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "02",
+          "partno": "11903712",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "95",
+          "partno": "11879288",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "99",
+          "partno": "12046605",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "BM",
+          "partno": "12003809",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "00",
+          "partno": "11551143",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "01",
+          "partno": "11898728",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "02",
+          "partno": "11795725",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "95",
+          "partno": "11898705",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "99",
+          "partno": "12039848",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "BM",
+          "partno": "11954025",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "00",
+          "partno": "11910100",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "01",
+          "partno": "11832670",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "02",
+          "partno": "11832686",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "03",
+          "partno": "11832696",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "04",
+          "partno": "11832740",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "95",
+          "partno": "11910195",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "99",
+          "partno": "11954023",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "BM",
+          "partno": "11920744",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "01",
+          "partno": "11818430",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "95",
+          "partno": "11818431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "99",
+          "partno": "11766829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "BM",
+          "partno": "11862008",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "00",
+          "partno": "11734378",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "01",
+          "partno": "11833488",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "95",
+          "partno": "11734424",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "99",
+          "partno": "11954805",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "BM",
+          "partno": "12226678",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "01",
+          "partno": "11803915",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "51",
+          "partno": "11950943",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "52",
+          "partno": "11950944",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "61",
+          "partno": "11866941",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "95",
+          "partno": "12111218",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "99",
+          "partno": "12413761",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "BM",
+          "partno": "11856513",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "00",
+          "partno": "11525372",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "01",
+          "partno": "11926241",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "02",
+          "partno": "11919834",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "51",
+          "partno": "11913972",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "95",
+          "partno": "11879316",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "99",
+          "partno": "11926239",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "BM",
+          "partno": "11999857",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "00",
+          "partno": "11179112",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "01",
+          "partno": "11883794",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "95",
+          "partno": "11855346",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "99",
+          "partno": "12007603",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "BM",
+          "partno": "11635336",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "00",
+          "partno": "10202085",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "01",
+          "partno": "11927377",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "02",
+          "partno": "11927383",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "95",
+          "partno": "11635081",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "99",
+          "partno": "1209772",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "BM",
+          "partno": "12109613",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "00",
+          "partno": "11568371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "01",
+          "partno": "11935716",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "02",
+          "partno": "11935717",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "95",
+          "partno": "11815916",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "99",
+          "partno": "12201011",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "BM",
+          "partno": "12150780",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "00",
+          "partno": "11561282",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "01",
+          "partno": "11950714",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "02",
+          "partno": "11950715",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "95",
+          "partno": "12180879",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "99",
+          "partno": "12124337",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "BM",
+          "partno": "12095258",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "00",
+          "partno": "11635071",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "01",
+          "partno": "11956326",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "02",
+          "partno": "11956327",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "03",
+          "partno": "11925491",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "04",
+          "partno": "11925527",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "05",
+          "partno": "11848099",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "06",
+          "partno": "11848104",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "07",
+          "partno": "11848114",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "95",
+          "partno": "11853256",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "99",
+          "partno": "12149349",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "BM",
+          "partno": "12044878",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "00",
+          "partno": "11601091",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "01",
+          "partno": "11932817",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "02",
+          "partno": "11932818",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "95",
+          "partno": "11601104",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "99",
+          "partno": "12103574",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "BM",
+          "partno": "12044880",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "00",
+          "partno": "11601092",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "01",
+          "partno": "11932817",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "02",
+          "partno": "11932818",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "95",
+          "partno": "11601103",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "99",
+          "partno": "12103578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "BM",
+          "partno": "11923750",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "00",
+          "partno": "11261289",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "01",
+          "partno": "11910015",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "95",
+          "partno": "11261290",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "99",
+          "partno": "12062454",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "BM",
+          "partno": "11633026",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "00",
+          "partno": "11602918",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "01",
+          "partno": "11867164",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "02",
+          "partno": "11535748",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "95",
+          "partno": "11713848",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "99",
+          "partno": "11867158",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "BM",
+          "partno": "12307942",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "00",
+          "partno": "11859811",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "01",
+          "partno": "12091356",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "02",
+          "partno": "11903787",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "51",
+          "partno": "12056573",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "95",
+          "partno": "12077517",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "99",
+          "partno": "12307935",
+          "isDeleted": "0"
+        }
+      ]
+    },
+    {
+      "modelCode": "MGS5_EV_LUX_49",
+      "modelName": "MGS5 EV LUX (49KWH)",
+      "mappings": [
+        {
+          "carVarietyCode": "3002",
+          "vehicleCodePrefix": "MMSL1D03XC2"
+        },
+        {
+          "carVarietyCode": "3003",
+          "vehicleCodePrefix": "MMSL1D03XCL"
+        }
+      ],
+      "items": [
+        {
+          "ecuname": "BCM",
+          "moduleid": "BM",
+          "partno": "12155431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "00",
+          "partno": "10726371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "01",
+          "partno": "12030578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "95",
+          "partno": "11923593",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "99",
+          "partno": "12232068",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "BM",
+          "partno": "12114268",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "01",
+          "partno": "12061654",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "95",
+          "partno": "12178113",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "99",
+          "partno": "12292929",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "BM",
+          "partno": "12059188",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "00",
+          "partno": "11686661",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "01",
+          "partno": "11903711",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "02",
+          "partno": "11903712",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "95",
+          "partno": "11879288",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "99",
+          "partno": "12046605",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "BM",
+          "partno": "12003809",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "00",
+          "partno": "11551143",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "01",
+          "partno": "11898728",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "02",
+          "partno": "11795725",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "95",
+          "partno": "11898705",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "99",
+          "partno": "12039848",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "BM",
+          "partno": "11954025",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "00",
+          "partno": "11910100",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "01",
+          "partno": "11832670",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "02",
+          "partno": "11832686",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "03",
+          "partno": "11832696",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "04",
+          "partno": "11832740",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "95",
+          "partno": "11910195",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "99",
+          "partno": "11954023",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "BM",
+          "partno": "11920744",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "01",
+          "partno": "11818430",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "95",
+          "partno": "11818431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "99",
+          "partno": "11766829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "BM",
+          "partno": "11862008",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "00",
+          "partno": "11734378",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "01",
+          "partno": "11833488",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "95",
+          "partno": "11734424",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "99",
+          "partno": "11954805",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "BM",
+          "partno": "12406198",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "00",
+          "partno": "11428271",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "01",
+          "partno": "12139117",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "51",
+          "partno": "12055815",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "60",
+          "partno": "11915258",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "61",
+          "partno": "111886583",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "62",
+          "partno": "11901594",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "95",
+          "partno": "12071651",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "99",
+          "partno": "12479032",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "BM",
+          "partno": "11856513",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "00",
+          "partno": "11525372",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "01",
+          "partno": "11926241",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "02",
+          "partno": "11919834",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "51",
+          "partno": "11913972",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "95",
+          "partno": "11879316",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "99",
+          "partno": "11926239",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "BM",
+          "partno": "12129853",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "01",
+          "partno": "11951015",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "95",
+          "partno": "11970668",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "99",
+          "partno": "12129852",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "BM",
+          "partno": "11999857",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "00",
+          "partno": "11179112",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "01",
+          "partno": "11883794",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "95",
+          "partno": "11855346",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "99",
+          "partno": "12007603",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "BM",
+          "partno": "11635336",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "00",
+          "partno": "10202085",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "01",
+          "partno": "11927377",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "02",
+          "partno": "11927383",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "95",
+          "partno": "11635081",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "99",
+          "partno": "12097726",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "BM",
+          "partno": "12109613",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "00",
+          "partno": "11568371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "01",
+          "partno": "11935716",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "02",
+          "partno": "11935717",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "95",
+          "partno": "11815916",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "99",
+          "partno": "12201011",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "BM",
+          "partno": "12150780",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "00",
+          "partno": "11561282",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "01",
+          "partno": "11950714",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "02",
+          "partno": "11950715",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "95",
+          "partno": "12180879",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "99",
+          "partno": "12124337",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "BM",
+          "partno": "12149352",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "00",
+          "partno": "11635071",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "01",
+          "partno": "11956328",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "02",
+          "partno": "11956327",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "03",
+          "partno": "11925491",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "04",
+          "partno": "11925527",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "05",
+          "partno": "11848099",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "06",
+          "partno": "11848104",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "07",
+          "partno": "11848114",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "95",
+          "partno": "11853256",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "99",
+          "partno": "12149351",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "BM",
+          "partno": "120448",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "00",
+          "partno": "11601091",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "01",
+          "partno": "11932817",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "02",
+          "partno": "11932818",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "95",
+          "partno": "11601104",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "99",
+          "partno": "12103574",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "BM",
+          "partno": "12044880",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "00",
+          "partno": "11601092",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "01",
+          "partno": "11932817",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "02",
+          "partno": "11932818",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "95",
+          "partno": "11601103",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "99",
+          "partno": "12103578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "BM",
+          "partno": "12203600",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "00",
+          "partno": "11179792",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "01",
+          "partno": "12048920",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "95",
+          "partno": "11968044",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "99",
+          "partno": "12265315",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "BM",
+          "partno": "11923750",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "00",
+          "partno": "11261289",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "01",
+          "partno": "11910015",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "95",
+          "partno": "11261290",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "99",
+          "partno": "12062454",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "BM",
+          "partno": "11633026",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "00",
+          "partno": "11602918",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "01",
+          "partno": "11867164",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "02",
+          "partno": "11535748",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "95",
+          "partno": "11713848",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "99",
+          "partno": "11867158",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "BM",
+          "partno": "12307942",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "00",
+          "partno": "11859811",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "01",
+          "partno": "12091356",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "02",
+          "partno": "11903787",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "51",
+          "partno": "12056573",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "95",
+          "partno": "12077517",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "99",
+          "partno": "12307935",
+          "isDeleted": "0"
+        }
+      ]
+    },
+    {
+      "modelCode": "MGS5_EV_LUX_62",
+      "modelName": "MGS5 EV LUX (62KWH)",
+      "mappings": [
+        {
+          "carVarietyCode": "3005",
+          "vehicleCodePrefix": "MMSL1D03YC2"
+        },
+        {
+          "carVarietyCode": "3006",
+          "vehicleCodePrefix": "MMSL1D03YCL"
+        }
+      ],
+      "items": [
+        {
+          "ecuname": "BCM",
+          "moduleid": "BM",
+          "partno": "12155431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "00",
+          "partno": "10726371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "01",
+          "partno": "12030578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "95",
+          "partno": "11923593",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BCM",
+          "moduleid": "99",
+          "partno": "12232068",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "BM",
+          "partno": "12114268",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "01",
+          "partno": "12061702",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "95",
+          "partno": "12178113",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "BMS",
+          "moduleid": "99",
+          "partno": "12292944",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "BM",
+          "partno": "12059188",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "00",
+          "partno": "11686661",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "01",
+          "partno": "11903711",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "02",
+          "partno": "11903712",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "95",
+          "partno": "11879288",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "CCU",
+          "moduleid": "99",
+          "partno": "12046605",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "BM",
+          "partno": "12003809",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "00",
+          "partno": "11551143",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "01",
+          "partno": "11898728",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "02",
+          "partno": "11795725",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "95",
+          "partno": "11898705",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "DMS",
+          "moduleid": "99",
+          "partno": "12039848",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "BM",
+          "partno": "11954025",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "00",
+          "partno": "11910100",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "01",
+          "partno": "11832670",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "02",
+          "partno": "11832686",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "03",
+          "partno": "11832696",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "04",
+          "partno": "11832740",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "95",
+          "partno": "11910195",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EPS",
+          "moduleid": "99",
+          "partno": "11954023",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "BM",
+          "partno": "11920744",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "01",
+          "partno": "11818430",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "95",
+          "partno": "11818431",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "ESCL",
+          "moduleid": "99",
+          "partno": "11766829",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "BM",
+          "partno": "11862008",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "00",
+          "partno": "11734378",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "01",
+          "partno": "11833488",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "95",
+          "partno": "11734424",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "EVCC",
+          "moduleid": "99",
+          "partno": "11954805",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "BM",
+          "partno": "12406198",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "00",
+          "partno": "11428271",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "01",
+          "partno": "12139117",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "51",
+          "partno": "12139118",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "60",
+          "partno": "11915258",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "61",
+          "partno": "11886583",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "62",
+          "partno": "11901594",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "95",
+          "partno": "12071651",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FICM",
+          "moduleid": "99",
+          "partno": "12479032",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "BM",
+          "partno": "11856513",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "00",
+          "partno": "11525372",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "01",
+          "partno": "11926241",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "02",
+          "partno": "11919834",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "51",
+          "partno": "11913972",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "95",
+          "partno": "11879316",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FVCM",
+          "moduleid": "99",
+          "partno": "11926239",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "BM",
+          "partno": "12129853",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "01",
+          "partno": "11951015",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "95",
+          "partno": "11970668",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "FLSM",
+          "moduleid": "99",
+          "partno": "12129852",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "BM",
+          "partno": "12158610",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "00",
+          "partno": "11179112",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "01",
+          "partno": "11967320",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "95",
+          "partno": "12071655",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "GW",
+          "moduleid": "99",
+          "partno": "12158609",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "BM",
+          "partno": "11635336",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "00",
+          "partno": "10202085",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "01",
+          "partno": "12079300",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "02",
+          "partno": "12079314",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "95",
+          "partno": "11635081",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "HVAC",
+          "moduleid": "99",
+          "partno": "12340391",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "BM",
+          "partno": "12109613",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "00",
+          "partno": "11568371",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "01",
+          "partno": "12063383",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "02",
+          "partno": "12063405",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "95",
+          "partno": "11815916",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IBS",
+          "moduleid": "99",
+          "partno": "12296634",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "BM",
+          "partno": "12150781",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "00",
+          "partno": "11561282",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "01",
+          "partno": "11950716",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "02",
+          "partno": "11950717",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "95",
+          "partno": "12180879",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IMCU",
+          "moduleid": "99",
+          "partno": "10877493",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "BM",
+          "partno": "12149352",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "00",
+          "partno": "11635071",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "01",
+          "partno": "11956328",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "02",
+          "partno": "11956327",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "03",
+          "partno": "12174920",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "04",
+          "partno": "12174957",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "05",
+          "partno": "12174959",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "06",
+          "partno": "12174963",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "07",
+          "partno": "12174966",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "95",
+          "partno": "11853256",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "IPK",
+          "moduleid": "99",
+          "partno": "12149351",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "BM",
+          "partno": "12044878",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "00",
+          "partno": "11601091",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "01",
+          "partno": "11932817",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "02",
+          "partno": "11932818",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "95",
+          "partno": "11601104",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "LHRDA",
+          "moduleid": "99",
+          "partno": "12103574",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "BM",
+          "partno": "12044880",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "00",
+          "partno": "11601092",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "01",
+          "partno": "11932817",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "02",
+          "partno": "11932818",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "95",
+          "partno": "11601103",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "RHRDA",
+          "moduleid": "99",
+          "partno": "12103578",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "BM",
+          "partno": "12203600",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "00",
+          "partno": "11179792",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "01",
+          "partno": "12048920",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "95",
+          "partno": "11968044",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "PLCM",
+          "moduleid": "99",
+          "partno": "12265315",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "BM",
+          "partno": "11923750",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "00",
+          "partno": "11261289",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "01",
+          "partno": "11910015",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "95",
+          "partno": "11261290",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SCU",
+          "moduleid": "99",
+          "partno": "12062454",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "BM",
+          "partno": "11633026",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "00",
+          "partno": "12169057",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "01",
+          "partno": "11867164",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "02",
+          "partno": "12032558",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "95",
+          "partno": "11713848",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "SDM",
+          "moduleid": "99",
+          "partno": "11867158",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "BM",
+          "partno": "12307942",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "00",
+          "partno": "11859811",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "01",
+          "partno": "12091356",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "02",
+          "partno": "11903787",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "51",
+          "partno": "12091358",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "95",
+          "partno": "11938663",
+          "isDeleted": "0"
+        },
+        {
+          "ecuname": "TBOX",
+          "moduleid": "99",
+          "partno": "12307935",
+          "isDeleted": "0"
+        }
+      ]
+    }
+  ]
+}

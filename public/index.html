@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MES - MuleSoft EAI Monitoring Dashboard | PT SGMW Motor Indonesia</title>
+  <!-- Local Offline Vendor Assets (Intranet Ready, No Internet Required) -->
+  <script src="/vendor/tailwind.js"></script>
+  <script src="/vendor/lucide.js"></script>
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    .pulse-dot {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+    pre code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
+
+  <!-- ======================================================== -->
+  <!-- LOGIN OVERLAY / AUTH GUARD                               -->
+  <!-- ======================================================== -->
+  <div id="login-overlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-md w-full p-8 shadow-2xl space-y-6 animate-in fade-in zoom-in-95 duration-200">
+      <div class="text-center space-y-2">
+        <div class="inline-flex p-3 bg-gradient-to-tr from-red-600 to-rose-500 rounded-2xl shadow-lg shadow-red-500/30 text-white mb-2">
+          <i data-lucide="shield-check" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-white tracking-tight">MES-API Gateway</h2>
+        <p class="text-xs text-slate-400">PT. SGMW Motor Indonesia &bull; Integration Service</p>
+      </div>
+      
+      <!-- Error Alert -->
+      <div id="login-error-alert" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center gap-2">
+        <i data-lucide="alert-circle" class="w-4 h-4 flex-shrink-0"></i>
+        <span id="login-error-text">Invalid username or password.</span>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Username</label>
+          <div class="flex items-center gap-2 bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 focus-within:border-indigo-500 transition">
+            <i data-lucide="user" class="w-4 h-4 text-slate-500"></i>
+            <input type="text" id="login-username" value="admin" required class="bg-transparent text-sm text-white placeholder-slate-600 outline-none flex-1">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Password</label>
+          <div class="flex items-center gap-2 bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 focus-within:border-indigo-500 transition">
+            <i data-lucide="lock" class="w-4 h-4 text-slate-500"></i>
+            <input type="password" id="login-password" placeholder="Enter password..." required class="bg-transparent text-sm text-white placeholder-slate-600 outline-none flex-1">
+          </div>
+        </div>
+
+        <button type="submit" id="btn-login-submit" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.99] text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+          <i data-lucide="log-in" class="w-4 h-4"></i>
+          <span>Sign In</span>
+        </button>
+      </form>
+
+      <div class="text-center text-[11px] text-slate-500 border-t border-slate-800 pt-4">
+        Authorized personnel only &bull; SGMW MES Security
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- TOP HEADER                                               -->
+  <!-- ======================================================== -->
+  <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700/60 sticky top-0 z-40 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-tr from-red-600 to-rose-400 p-2.5 rounded-xl shadow-lg shadow-red-500/20">
+          <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl font-bold tracking-tight text-white">MES to MuleSoft EAI</h1>
+            <span id="env-badge" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">TEST</span>
+            <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-700 text-slate-300 border border-slate-600">Plant: WH15</span>
+            <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-rose-900/60 text-rose-300 border border-rose-700/60">Brand: MG</span>
+          </div>
+          <p class="text-xs text-slate-400">PT. SGMW Motor Indonesia &bull; Factory Cikarang Integration Service</p>
+        </div>
+      </div>
+
+      <!-- Controls & Status -->
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- DB Status -->
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-700 text-xs">
+          <span id="db-status-dot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 pulse-dot"></span>
+          <span class="text-slate-400">DB:</span>
+          <span id="db-status-text" class="font-semibold text-emerald-300">CONNECTED</span>
+        </div>
+
+        <!-- Auto refresh toggle -->
+        <label class="flex items-center gap-2 cursor-pointer px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-700 text-xs text-slate-300 select-none">
+          <input type="checkbox" id="auto-refresh-toggle" checked class="w-3.5 h-3.5 accent-indigo-500 rounded">
+          <span>Auto Refresh (10s)</span>
+        </label>
+
+        <!-- Refresh button -->
+        <button id="btn-refresh" onclick="loadDashboardData()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition text-xs font-medium text-white shadow-sm">
+          <i data-lucide="refresh-cw" id="refresh-icon" class="w-3.5 h-3.5"></i>
+          <span>Refresh</span>
+        </button>
+
+        <!-- User Profile & Logout -->
+        <div id="user-profile-badge" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700 text-xs">
+          <i data-lucide="user-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span class="text-slate-300 font-semibold" id="logged-username">admin</span>
+          <button onclick="handleLogout()" class="ml-2 text-rose-400 hover:text-rose-300 transition flex items-center gap-1 font-semibold" title="Sign out">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- DEVELOPMENT MODE ALERT BANNER -->
+  <div id="dev-mode-banner" class="hidden bg-amber-500/10 border-b border-amber-500/30 px-6 py-2.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between text-xs text-amber-200">
+      <div class="flex items-center gap-2">
+        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+        <span><strong>Development Mode Active:</strong> Automatic background cron scheduler is <strong>DISABLED</strong>. Pending records will not be sent automatically. Batch sync is capped at 50 records per trigger.</span>
+      </div>
+      <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px] font-semibold border border-amber-500/30">MANUAL ONLY</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
+
+    <!-- OVERVIEW STATS CARDS -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
+      
+      <!-- System Info Card -->
+      <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">System Status</span>
+          <i data-lucide="server" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+        </div>
+        <div>
+          <div class="text-base font-bold text-white tracking-tight mb-1 truncate" id="server-uptime">Uptime: --</div>
+          <div class="text-[11px] text-slate-400 truncate" id="server-db">Host: 10.140.240.10</div>
+          <div class="text-[11px] text-slate-400 truncate" id="server-scheduler">Cron: Checking...</div>
+        </div>
+      </div>
+
+      <!-- 1. Order Broadcast Stats Card -->
+      <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">1. Order Broadcast</span>
+          <i data-lucide="send" class="w-4 h-4 text-indigo-400 flex-shrink-0"></i>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl font-bold font-mono text-emerald-400" id="ob-success-count">0</span>
+              <span class="text-[11px] font-medium text-emerald-500/80 uppercase">OK</span>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-[11px] text-slate-400">Fail:</span>
+              <span class="text-sm font-bold font-mono text-rose-400" id="ob-failed-count">0</span>
+            </div>
+          </div>
+          <div class="text-[11px] text-amber-300 flex items-center gap-1.5 truncate">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+            <span class="truncate">Pending: <strong class="font-mono text-amber-200" id="ob-pending-count">0</strong> MG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Vehicle Basic Info Stats Card -->
+      <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">2. Basic Info</span>
+          <i data-lucide="car" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl font-bold font-mono text-emerald-400" id="vbi-success-count">0</span>
+              <span class="text-[11px] font-medium text-emerald-500/80 uppercase">OK</span>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-[11px] text-slate-400">Fail:</span>
+              <span class="text-sm font-bold font-mono text-rose-400" id="vbi-failed-count">0</span>
+            </div>
+          </div>
+          <div class="text-[11px] text-amber-300 flex items-center gap-1.5 truncate">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+            <span class="truncate">Pending: <strong class="font-mono text-amber-200" id="vbi-pending-count">0</strong> MG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Vehicle Passing Point Stats Card -->
+      <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">3. Passing Point</span>
+          <i data-lucide="map-pin" class="w-4 h-4 text-sky-400 flex-shrink-0"></i>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl font-bold font-mono text-emerald-400" id="vpp-success-count">0</span>
+              <span class="text-[11px] font-medium text-emerald-500/80 uppercase">OK</span>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-[11px] text-slate-400">Fail:</span>
+              <span class="text-sm font-bold font-mono text-rose-400" id="vpp-failed-count">0</span>
+            </div>
+          </div>
+          <div class="text-[11px] text-amber-300 flex items-center gap-1.5 truncate">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+            <span class="truncate">Pending: <strong class="font-mono text-amber-200" id="vpp-pending-count">0</strong> MG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Vehicle Precise Traceability Stats Card -->
+      <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">4. Traceability</span>
+          <i data-lucide="cpu" class="w-4 h-4 text-purple-400 flex-shrink-0"></i>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl font-bold font-mono text-emerald-400" id="vpt-success-count">0</span>
+              <span class="text-[11px] font-medium text-emerald-500/80 uppercase">OK</span>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-[11px] text-slate-400">Fail:</span>
+              <span class="text-sm font-bold font-mono text-rose-400" id="vpt-failed-count">0</span>
+            </div>
+          </div>
+          <div class="text-[11px] text-amber-300 flex items-center gap-1.5 truncate">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+            <span class="truncate">Pending: <strong class="font-mono text-amber-200" id="vpt-pending-count">0</strong> MG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Vehicle Offline BOM Stats Card -->
+      <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">5. Offline BOM</span>
+          <i data-lucide="boxes" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl font-bold font-mono text-emerald-400" id="vob-success-count">0</span>
+              <span class="text-[11px] font-medium text-emerald-500/80 uppercase">OK</span>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-[11px] text-slate-400">Fail:</span>
+              <span class="text-sm font-bold font-mono text-rose-400" id="vob-failed-count">0</span>
+            </div>
+          </div>
+          <div class="text-[11px] text-amber-300 flex items-center gap-1.5 truncate">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+            <span class="truncate">Pending: <strong class="font-mono text-amber-200" id="vob-pending-count">0</strong> BOM</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ACTION CARDS (TRIGGER CONTROLS & CONFIG BUTTONS) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
+
+      <!-- Order Broadcast Action Card -->
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg shrink-0">
+                <i data-lucide="radio" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-semibold text-sm text-white truncate">Order Broadcast</h3>
+                <p class="text-[11px] text-slate-400 truncate">GA Online &gt; 0 &bull; ID001 &bull; MG Only</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <button onclick="openInterfaceDetailModal('order-broadcast')" class="w-full py-1.5 px-2 bg-slate-700/80 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 border border-slate-600/60 shadow-sm whitespace-nowrap" title="View SQL Source, Script & Scheduler">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-indigo-400 shrink-0"></i>
+              <span class="truncate">Config &amp; SQL</span>
+            </button>
+            <button onclick="triggerBatchSync('order-broadcast')" class="w-full py-1.5 px-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm whitespace-nowrap" title="Trigger Batch Synchronization">
+              <i data-lucide="play" class="w-3.5 h-3.5 shrink-0"></i>
+              <span class="truncate">Sync Batch</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-lg border border-slate-700/60 focus-within:border-indigo-500/50 transition">
+          <input type="text" id="ob-single-vin-input" placeholder="Enter VIN..." class="bg-transparent text-xs text-white placeholder-slate-500 outline-none flex-1 min-w-0 px-1.5 font-mono">
+          <button onclick="triggerSingleVinSync('order-broadcast')" class="px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-[11px] font-semibold text-slate-200 rounded-lg transition whitespace-nowrap shrink-0 flex items-center gap-1">
+            <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+            <span>Re-send</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Vehicle Basic Info Action Card -->
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg shrink-0">
+                <i data-lucide="layers" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-semibold text-sm text-white truncate">Vehicle Basic Info</h3>
+                <p class="text-[11px] text-slate-400 truncate">Configs + BOM &bull; ID001 &bull; MG Only</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <button onclick="openInterfaceDetailModal('vehicle-basic-info')" class="w-full py-1.5 px-2 bg-slate-700/80 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 border border-slate-600/60 shadow-sm whitespace-nowrap" title="View SQL Source, Script & Scheduler">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+              <span class="truncate">Config &amp; SQL</span>
+            </button>
+            <button onclick="triggerBatchSync('vehicle-basic-info')" class="w-full py-1.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm whitespace-nowrap" title="Trigger Batch Synchronization">
+              <i data-lucide="play" class="w-3.5 h-3.5 shrink-0"></i>
+              <span class="truncate">Sync Batch</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-lg border border-slate-700/60 focus-within:border-emerald-500/50 transition">
+          <input type="text" id="vbi-single-vin-input" placeholder="Enter VIN..." class="bg-transparent text-xs text-white placeholder-slate-500 outline-none flex-1 min-w-0 px-1.5 font-mono">
+          <button onclick="triggerSingleVinSync('vehicle-basic-info')" class="px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-[11px] font-semibold text-slate-200 rounded-lg transition whitespace-nowrap shrink-0 flex items-center gap-1">
+            <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+            <span>Re-send</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Vehicle Passing Point Action Card -->
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="p-2 bg-sky-500/10 text-sky-400 rounded-lg shrink-0">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-semibold text-sm text-white truncate">Passing Point</h3>
+                <p class="text-[11px] text-slate-400 truncate">Handover Date &bull; ID001 &bull; MG Only</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <button onclick="openInterfaceDetailModal('vehicle-passing-point')" class="w-full py-1.5 px-2 bg-slate-700/80 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 border border-slate-600/60 shadow-sm whitespace-nowrap" title="View SQL Source, Script & Scheduler">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-sky-400 shrink-0"></i>
+              <span class="truncate">Config &amp; SQL</span>
+            </button>
+            <button onclick="triggerBatchSync('vehicle-passing-point')" class="w-full py-1.5 px-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm whitespace-nowrap" title="Trigger Batch Synchronization">
+              <i data-lucide="play" class="w-3.5 h-3.5 shrink-0"></i>
+              <span class="truncate">Sync Batch</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-lg border border-slate-700/60 focus-within:border-sky-500/50 transition">
+          <input type="text" id="vpp-single-vin-input" placeholder="Enter VIN..." class="bg-transparent text-xs text-white placeholder-slate-500 outline-none flex-1 min-w-0 px-1.5 font-mono">
+          <button onclick="triggerSingleVinSync('vehicle-passing-point')" class="px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-[11px] font-semibold text-slate-200 rounded-lg transition whitespace-nowrap shrink-0 flex items-center gap-1">
+            <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+            <span>Re-send</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Vehicle Precise Traceability Action Card -->
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="p-2 bg-purple-500/10 text-purple-400 rounded-lg shrink-0">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-semibold text-sm text-white truncate">Precise Traceability</h3>
+                <p class="text-[11px] text-slate-400 truncate">Recall Parts &bull; ID001 &bull; MG Only</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <button onclick="openInterfaceDetailModal('vehicle-precise-traceability')" class="w-full py-1.5 px-2 bg-slate-700/80 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 border border-slate-600/60 shadow-sm whitespace-nowrap" title="View SQL Source, Script & Scheduler">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-purple-400 shrink-0"></i>
+              <span class="truncate">Config &amp; SQL</span>
+            </button>
+            <button onclick="triggerBatchSync('vehicle-precise-traceability')" class="w-full py-1.5 px-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm whitespace-nowrap" title="Trigger Batch Synchronization">
+              <i data-lucide="play" class="w-3.5 h-3.5 shrink-0"></i>
+              <span class="truncate">Sync Batch</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-lg border border-slate-700/60 focus-within:border-purple-500/50 transition">
+          <input type="text" id="vpt-single-vin-input" placeholder="Enter VIN..." class="bg-transparent text-xs text-white placeholder-slate-500 outline-none flex-1 min-w-0 px-1.5 font-mono">
+          <button onclick="triggerSingleVinSync('vehicle-precise-traceability')" class="px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-[11px] font-semibold text-slate-200 rounded-lg transition whitespace-nowrap shrink-0 flex items-center gap-1">
+            <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+            <span>Re-send</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Vehicle Offline BOM Action Card -->
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="p-2 bg-amber-500/10 text-amber-400 rounded-lg shrink-0">
+                <i data-lucide="boxes" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-semibold text-sm text-white truncate">Vehicle Offline BOM</h3>
+                <p class="text-[11px] text-slate-400 truncate">ECU &amp; Part &bull; ID001 &bull; BOM v3.0</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <button onclick="openInterfaceDetailModal('vehicle-offline-bom')" class="w-full py-1.5 px-2 bg-slate-700/80 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 border border-slate-600/60 shadow-sm whitespace-nowrap" title="View SQL Source, Script & Scheduler">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-amber-400 shrink-0"></i>
+              <span class="truncate">Config &amp; SQL</span>
+            </button>
+            <button onclick="triggerBatchSync('vehicle-offline-bom')" class="w-full py-1.5 px-2 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm whitespace-nowrap" title="Trigger Batch Synchronization">
+              <i data-lucide="play" class="w-3.5 h-3.5 shrink-0"></i>
+              <span class="truncate">Sync Batch</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-lg border border-slate-700/60 focus-within:border-amber-500/50 transition">
+          <input type="text" id="vob-single-id-input" placeholder="Enter Record ID..." class="bg-transparent text-xs text-white placeholder-slate-500 outline-none flex-1 min-w-0 px-1.5 font-mono">
+          <button onclick="triggerSingleVinSync('vehicle-offline-bom')" class="px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-[11px] font-semibold text-slate-200 rounded-lg transition whitespace-nowrap shrink-0 flex items-center gap-1">
+            <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+            <span>Re-send</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MONITORING LOGS SECTION -->
+    <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl overflow-hidden shadow-sm">
+      
+      <!-- Logs Header & Tabs -->
+      <div class="border-b border-slate-700/60 px-5 py-4 flex flex-col md:flex-row md:items-center justify-between gap-3 bg-slate-800/80">
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="tab-ob" onclick="switchTab('ob')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-sm flex items-center gap-2">
+            <span>1. Order Broadcast</span>
+            <span id="tab-ob-badge" class="px-1.5 py-0.2 rounded-full bg-indigo-800 text-[10px]">0</span>
+          </button>
+          <button id="tab-vbi" onclick="switchTab('vbi')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-slate-700 text-slate-300 hover:bg-slate-600 flex items-center gap-2">
+            <span>2. Vehicle Basic Info</span>
+            <span id="tab-vbi-badge" class="px-1.5 py-0.2 rounded-full bg-slate-800 text-[10px]">0</span>
+          </button>
+          <button id="tab-vpp" onclick="switchTab('vpp')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-slate-700 text-slate-300 hover:bg-slate-600 flex items-center gap-2">
+            <span>3. Passing Point</span>
+            <span id="tab-vpp-badge" class="px-1.5 py-0.2 rounded-full bg-slate-800 text-[10px]">0</span>
+          </button>
+          <button id="tab-vpt" onclick="switchTab('vpt')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-slate-700 text-slate-300 hover:bg-slate-600 flex items-center gap-2">
+            <span>4. Precise Traceability</span>
+            <span id="tab-vpt-badge" class="px-1.5 py-0.2 rounded-full bg-slate-800 text-[10px]">0</span>
+          </button>
+          <button id="tab-vob" onclick="switchTab('vob')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-slate-700 text-slate-300 hover:bg-slate-600 flex items-center gap-2">
+            <span>5. Vehicle Offline BOM</span>
+            <span id="tab-vob-badge" class="px-1.5 py-0.2 rounded-full bg-slate-800 text-[10px]">0</span>
+          </button>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex items-center gap-2">
+          <!-- Search input -->
+          <div class="flex items-center gap-1.5 bg-slate-900/60 px-2.5 py-1 rounded-lg border border-slate-700/60 text-xs">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400"></i>
+            <input type="text" id="log-search-input" oninput="renderLogsTable()" placeholder="Filter VIN, Plan ID, Msg..." class="bg-transparent text-xs text-white placeholder-slate-500 outline-none w-36 md:w-48">
+          </div>
+
+          <!-- Status Filter -->
+          <select id="log-status-filter" onchange="renderLogsTable()" class="bg-slate-900/60 border border-slate-700/60 text-xs text-slate-300 rounded-lg px-2.5 py-1 outline-none">
+            <option value="ALL">All Status</option>
+            <option value="SUCCESS">SUCCESS only</option>
+            <option value="FAILED">FAILED only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Logs Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr id="logs-header-row" class="border-b border-slate-700/60 bg-slate-850 text-slate-400 font-semibold uppercase tracking-wider text-[11px]">
+              <th class="py-3 px-4">Last Attempt (GMT+7)</th>
+              <th class="py-3 px-4">VIN</th>
+              <th class="py-3 px-4">Plan ID</th>
+              <th class="py-3 px-4">Milestone Date</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4">EAI Response</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="logs-table-body" class="divide-y divide-slate-800 text-slate-300">
+            <tr>
+              <td colspan="7" class="py-8 text-center text-slate-500">
+                <div class="flex items-center justify-center gap-2">
+                  <i data-lucide="loader" class="w-4 h-4 animate-spin text-indigo-400"></i>
+                  <span>Loading transmission log entries...</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: INTERFACE DETAILS, SQL SOURCE & SCHEDULER         -->
+  <!-- ======================================================== -->
+  <div id="interface-detail-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-850">
+        <div class="flex items-center gap-3">
+          <div id="detail-modal-icon-wrap" class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 id="detail-modal-title" class="font-bold text-white text-base">Interface Details</h3>
+              <span id="detail-modal-code" class="px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-slate-800 text-slate-300 border border-slate-700">MES_OrderBroadcast_Pub</span>
+            </div>
+            <p id="detail-modal-desc" class="text-xs text-slate-400 mt-0.5">Interface description...</p>
+          </div>
+        </div>
+        <button onclick="closeInterfaceDetailModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Tabs Navigation -->
+      <div class="flex items-center gap-1 px-5 pt-2 border-b border-slate-800 bg-slate-900 text-xs">
+        <button id="btn-tab-sql" onclick="switchDetailTab('sql')" class="px-4 py-2 font-semibold border-b-2 border-indigo-500 text-indigo-400 flex items-center gap-2 transition">
+          <i data-lucide="database" class="w-3.5 h-3.5"></i>
+          <span>1. SQL Data Source</span>
+        </button>
+        <button id="btn-tab-script" onclick="switchDetailTab('script')" class="px-4 py-2 font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition">
+          <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
+          <span>2. View Script &amp; Payload</span>
+        </button>
+        <button id="btn-tab-scheduler" onclick="switchDetailTab('scheduler')" class="px-4 py-2 font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+          <span>3. Scheduler Job Config</span>
+        </button>
+      </div>
+
+      <!-- Modal Body (3 Tabs Content) -->
+      <div class="p-5 overflow-y-auto space-y-4 flex-1">
+        
+        <!-- TAB 1: SQL DATA SOURCE -->
+        <div id="content-tab-sql" class="space-y-4">
+          <!-- Filter & Conditions Box -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/60">
+              <span class="text-slate-400 block text-[10px] uppercase font-semibold mb-1">Trigger Condition</span>
+              <span id="detail-sql-trigger" class="font-mono text-emerald-400 text-xs">-</span>
+            </div>
+            <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/60">
+              <span class="text-slate-400 block text-[10px] uppercase font-semibold mb-1">Brand Filter</span>
+              <span id="detail-sql-brand" class="font-mono text-cyan-400 text-xs">-</span>
+            </div>
+          </div>
+
+          <!-- Tables Involved -->
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+              <i data-lucide="table" class="w-3.5 h-3.5 text-indigo-400"></i>
+              <span>Database Tables Involved (PTSGMW_MES)</span>
+            </h4>
+            <div id="detail-sql-tables" class="space-y-1.5 text-xs">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- SQL Queries Blocks -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <i data-lucide="terminal" class="w-3.5 h-3.5 text-indigo-400"></i>
+                <span>SQL Extraction Queries</span>
+              </h4>
+              <button onclick="copyActiveSqlQuery()" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 hover:text-white transition flex items-center gap-1 border border-slate-700">
+                <i data-lucide="copy" class="w-3 h-3"></i>
+                <span id="copy-sql-text">Copy SQL</span>
+              </button>
+            </div>
+            <div id="detail-sql-code-container" class="rounded-xl border border-slate-800 bg-slate-950 p-4 max-h-72 overflow-y-auto">
+              <pre><code id="detail-sql-code" class="text-xs text-sky-300 font-mono leading-relaxed whitespace-pre">SELECT ...</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: VIEW SCRIPT & PAYLOAD -->
+        <div id="content-tab-script" class="space-y-4 hidden">
+          <!-- Target Endpoint -->
+          <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/60 text-xs space-y-1">
+            <span class="text-slate-400 block text-[10px] uppercase font-semibold">MuleSoft EAI Destination Endpoint</span>
+            <div id="detail-script-endpoint" class="font-mono text-emerald-400 text-xs break-all">http://...</div>
+          </div>
+
+          <!-- Transformation Rules -->
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+              <i data-lucide="check-square" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Transformation &amp; Business Rules</span>
+            </h4>
+            <ul id="detail-script-rules" class="list-disc list-inside space-y-1 text-xs text-slate-300 bg-slate-800/40 p-3.5 rounded-xl border border-slate-700/60">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Payload Sample -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <i data-lucide="file-json" class="w-3.5 h-3.5 text-indigo-400"></i>
+                <span>Sample JSON Payload Schema</span>
+              </h4>
+              <button onclick="copySamplePayloadJson()" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 hover:text-white transition flex items-center gap-1 border border-slate-700">
+                <i data-lucide="copy" class="w-3 h-3"></i>
+                <span id="copy-sample-text">Copy Sample</span>
+              </button>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-slate-950 p-4 max-h-72 overflow-y-auto">
+              <pre><code id="detail-script-payload" class="text-xs text-emerald-300 font-mono leading-relaxed whitespace-pre">{ "records": [] }</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: SCHEDULER JOB CONFIG -->
+        <div id="content-tab-scheduler" class="space-y-4 hidden">
+          <!-- Active Status Card -->
+          <div class="p-4 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div id="sched-status-icon" class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400">
+                <i data-lucide="play-circle" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-semibold text-white">Interface Scheduler Status</h4>
+                  <span id="sched-status-badge" class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">ACTIVE</span>
+                </div>
+                <p id="sched-status-info" class="text-xs text-slate-400 mt-0.5">Running per configured pattern.</p>
+              </div>
+            </div>
+
+            <!-- Toggle Switch -->
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="sched-toggle-input" onchange="handleScheduleToggle(event)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+            </label>
+          </div>
+
+          <!-- Schedule Preset Selector -->
+          <div class="space-y-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Schedule Preset</label>
+            <select id="sched-preset-select" onchange="handlePresetChange(event)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500 transition">
+              <option value="shift_split">Shift Pabrik: 08:00 - 20:00 (per 30m) &amp; 20:00 - 08:00 (per 1 jam)</option>
+              <option value="every_30m">Setiap 30 Menit Sepanjang Hari (*/30 * * * *)</option>
+              <option value="every_15m">Setiap 15 Menit Intensif (*/15 * * * *)</option>
+              <option value="every_1h">Setiap 1 Jam Sekali (0 * * * *)</option>
+              <option value="custom">Custom Cron Expression (Manual)</option>
+            </select>
+          </div>
+
+          <!-- Cron Pattern Inputs -->
+          <div class="space-y-3">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+              <span>Cron Expression Rules</span>
+              <span class="text-[10px] text-slate-500 font-normal">Standard 5-part cron syntax</span>
+            </label>
+            
+            <div id="sched-patterns-container" class="space-y-2">
+              <!-- Pattern inputs dynamically populated -->
+            </div>
+
+            <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 text-xs text-slate-400 flex items-start gap-2">
+              <i data-lucide="info" class="w-4 h-4 text-indigo-400 flex-shrink-0 mt-0.5"></i>
+              <div id="sched-preset-explanation">
+                <strong>Shift Pabrik:</strong> Antara jam 08:00 - 20:00 berjalan setiap 30 menit. Antara jam 20:00 - 08:00 berjalan setiap 1 jam.
+              </div>
+            </div>
+          </div>
+
+          <!-- Last Run & Statistics -->
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/60">
+              <span class="text-slate-400 block text-[10px] uppercase font-semibold">Last Scheduled Execution</span>
+              <span id="sched-last-run" class="font-mono text-slate-200">-</span>
+            </div>
+            <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/60">
+              <span class="text-slate-400 block text-[10px] uppercase font-semibold">Last Execution Status</span>
+              <span id="sched-last-status" class="font-semibold text-emerald-400">-</span>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="pt-2">
+            <button id="btn-save-schedule" onclick="saveActiveScheduleConfig()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Save &amp; Apply Schedule (No Server Restart Required)</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-900/80 flex items-center justify-between">
+        <span class="text-[11px] text-slate-500">Changes apply immediately to running background workers</span>
+        <button onclick="closeInterfaceDetailModal()" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs font-medium transition border border-slate-700">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: JSON PAYLOAD MODAL (FOR ROW LOGS)                 -->
+  <!-- ======================================================== -->
+  <div id="payload-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-850">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
+            <i data-lucide="code" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-bold text-white text-base">Transmission Payload &amp; Response</h3>
+              <span id="modal-interface-badge" class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-slate-800 text-slate-300 border border-slate-700">Order Broadcast</span>
+              <span id="modal-status-badge" class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">SUCCESS</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5">VIN: <span id="modal-vin-display" class="font-mono font-semibold text-slate-200">-</span></p>
+          </div>
+        </div>
+        <button onclick="closePayloadModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 overflow-y-auto space-y-4 flex-1">
+        
+        <!-- Response Summary Box -->
+        <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+          <div>
+            <span class="text-slate-400 block text-[10px] uppercase font-semibold">EAI Response Status</span>
+            <span id="modal-resp-status" class="font-bold font-mono text-emerald-400">S (Success)</span>
+          </div>
+          <div class="col-span-2">
+            <span class="text-slate-400 block text-[10px] uppercase font-semibold">Response Message</span>
+            <span id="modal-resp-message" class="text-slate-200 truncate block">-</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px] uppercase font-semibold">Last Attempt (GMT+7)</span>
+            <span id="modal-resp-time" class="font-mono text-slate-300">-</span>
+          </div>
+        </div>
+
+        <!-- JSON Payload Box -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+              <i data-lucide="file-json" class="w-3.5 h-3.5 text-indigo-400"></i>
+              <span>Outgoing JSON Payload Sent to MuleSoft</span>
+            </span>
+            <button id="btn-copy-json" onclick="copyModalJson()" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 hover:text-white transition flex items-center gap-1 border border-slate-700 shadow-sm">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span id="copy-btn-text">Copy JSON</span>
+            </button>
+          </div>
+          <div class="relative rounded-xl border border-slate-800 bg-slate-950 p-4 max-h-80 overflow-y-auto">
+            <pre><code id="modal-json-content" class="text-xs text-emerald-300 font-mono leading-relaxed whitespace-pre">Loading JSON payload...</code></pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-900/80 flex items-center justify-between">
+        <span class="text-[11px] text-slate-500">Destination: MuleSoft EAI Endpoint</span>
+        <div class="flex items-center gap-2">
+          <button id="modal-resend-btn" onclick="resendFromModal()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Re-send Now</span>
+          </button>
+          <button onclick="closePayloadModal()" class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs font-medium transition border border-slate-700">
+            Close
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast" class="fixed bottom-6 right-6 max-w-sm w-full bg-slate-800 border border-slate-700 shadow-2xl rounded-xl p-4 transition-all duration-300 transform translate-y-12 opacity-0 pointer-events-none z-50 flex items-start gap-3">
+    <div id="toast-icon-wrap" class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+      <i data-lucide="check-circle" id="toast-icon" class="w-5 h-5"></i>
+    </div>
+    <div class="flex-1">
+      <h4 id="toast-title" class="font-semibold text-sm text-white">Success</h4>
+      <p id="toast-message" class="text-xs text-slate-400 mt-0.5">Operation executed successfully.</p>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT APPLICATION LOGIC                             -->
+  <!-- ======================================================== -->
+  <script>
+    let activeTab = 'ob'; // 'ob', 'vbi', 'vpp', 'vpt', or 'vob'
+    let currentLogs = { orderBroadcast: [], vehicleBasicInfo: [], vehiclePassingPoint: [], vehiclePreciseTraceability: [], vehicleOfflineBom: [] };
+    let refreshTimer = null;
+    let activeModalVin = '';
+    let activeModalEndpoint = '';
+    
+    // Active detail modal state
+    let activeDetailInterfaceKey = '';
+    let activeDetailData = null;
+    let activeDetailTab = 'sql'; // 'sql', 'script', 'scheduler'
+
+    function refreshIcons() {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    /**
+     * Authenticated Fetch Wrapper
+     * Otomatis melampirkan header Authorization: Bearer <token>
+     */
+    async function authFetch(url, options = {}) {
+      const token = localStorage.getItem('mes_auth_token');
+      options.headers = {
+        ...options.headers,
+      };
+
+      if (!(options.body instanceof FormData)) {
+        options.headers['Content-Type'] = 'application/json';
+      }
+
+      if (token) {
+        options.headers['Authorization'] = 'Bearer ' + token;
+      }
+
+      const res = await fetch(url, options);
+
+      if (res.status === 401) {
+        showLoginOverlay('Session expired. Please sign in again.');
+        throw new Error('Unauthorized');
+      }
+
+      return res;
+    }
+
+    /**
+     * Login & Auth State Management
+     */
+    function showLoginOverlay(errorMsg = '') {
+      const overlay = document.getElementById('login-overlay');
+      const errBox = document.getElementById('login-error-alert');
+      const errText = document.getElementById('login-error-text');
+
+      if (errorMsg) {
+        errBox.classList.remove('hidden');
+        errText.innerText = errorMsg;
+      } else {
+        errBox.classList.add('hidden');
+      }
+
+      overlay.classList.remove('hidden');
+      refreshIcons();
+    }
+
+    function hideLoginOverlay() {
+      const overlay = document.getElementById('login-overlay');
+      overlay.classList.add('hidden');
+    }
+
+    async function checkAuthSession() {
+      const token = localStorage.getItem('mes_auth_token');
+      if (!token) {
+        showLoginOverlay();
+        return false;
+      }
+
+      try {
+        const res = await fetch('/api/auth/verify', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        const json = await res.json();
+        if (json.authenticated) {
+          hideLoginOverlay();
+          document.getElementById('logged-username').innerText = json.data?.username || 'admin';
+          return true;
+        } else {
+          localStorage.removeItem('mes_auth_token');
+          showLoginOverlay();
+          return false;
+        }
+      } catch (err) {
+        showLoginOverlay();
+        return false;
+      }
+    }
+
+    async function handleLoginSubmit(event) {
+      event.preventDefault();
+      const usernameInput = document.getElementById('login-username').value.trim();
+      const passwordInput = document.getElementById('login-password').value;
+      const btnSubmit = document.getElementById('btn-login-submit');
+
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i><span>Signing in...</span>';
+      refreshIcons();
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: usernameInput, password: passwordInput }),
+        });
+
+        const json = await res.json();
+
+        if (json.success && json.data?.token) {
+          localStorage.setItem('mes_auth_token', json.data.token);
+          hideLoginOverlay();
+          document.getElementById('logged-username').innerText = json.data.user.username;
+          showToast('Welcome', `Signed in as ${json.data.user.username}`);
+          loadDashboardData();
+        } else {
+          showLoginOverlay(json.message || 'Invalid username or password.');
+        }
+      } catch (err) {
+        showLoginOverlay('Failed to connect to authentication server.');
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = '<i data-lucide="log-in" class="w-4 h-4"></i><span>Sign In</span>';
+        refreshIcons();
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('mes_auth_token');
+      showLoginOverlay('You have been logged out.');
+      showToast('Logged Out', 'Session terminated successfully.');
+    }
+
+    /**
+     * Formats timestamp into GMT+7 (Western Indonesia Time)
+     */
+    function formatDateGMT7(val) {
+      if (!val) return '-';
+      try {
+        let clean = String(val).replace('T', ' ').replace('Z', '').split('.')[0];
+        const parts = clean.split(' ');
+        if (parts.length === 2) {
+          const dateParts = parts[0].split('-');
+          if (dateParts.length === 3) {
+            const y = dateParts[0];
+            const m = parseInt(dateParts[1], 10);
+            const d = dateParts[2];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const monthName = months[m - 1] || dateParts[1];
+            return `${d} ${monthName} ${y}, ${parts[1]}`;
+          }
+        }
+        return clean;
+      } catch (e) {
+        return val;
+      }
+    }
+
+    function formatUptime(seconds) {
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      const s = seconds % 60;
+      if (h > 0) return `${h}h ${m}m ${s}s`;
+      if (m > 0) return `${m}m ${s}s`;
+      return `${s}s`;
+    }
+
+    function showToast(title, message, isError = false) {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMsg = document.getElementById('toast-message');
+      const iconWrap = document.getElementById('toast-icon-wrap');
+
+      toastTitle.innerText = title;
+      toastMsg.innerText = message;
+
+      if (isError) {
+        iconWrap.className = 'p-2 rounded-lg bg-rose-500/10 text-rose-400';
+        iconWrap.innerHTML = '<i data-lucide="alert-triangle" class="w-5 h-5"></i>';
+      } else {
+        iconWrap.className = 'p-2 rounded-lg bg-emerald-500/10 text-emerald-400';
+        iconWrap.innerHTML = '<i data-lucide="check-circle" class="w-5 h-5"></i>';
+      }
+      refreshIcons();
+
+      toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+
+    /**
+     * Dashboard Data Loader
+     */
+    async function loadDashboardData() {
+      const refreshIcon = document.getElementById('refresh-icon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      try {
+        const res = await authFetch('/api/dashboard/summary');
+        const json = await res.json();
+
+        if (json.success) {
+          const payload = json.data || json;
+          const server = payload.server || payload.system || {};
+          const stats = payload.stats || {};
+          const logs = payload.logs || {};
+
+          // Server Info
+          if (server.uptimeSeconds !== undefined) {
+            document.getElementById('server-uptime').innerText = `Uptime: ${formatUptime(server.uptimeSeconds)}`;
+          }
+          if (server.database) {
+            document.getElementById('server-db').innerText = `DB: ${server.database.server} (${server.database.database})`;
+          }
+          
+          if (server.scheduler) {
+            const schedText = server.scheduler.enabled ? 'Cron: ACTIVE' : 'Cron: DISABLED';
+            document.getElementById('server-scheduler').innerText = schedText;
+
+            // Dev Mode Banner
+            const devBanner = document.getElementById('dev-mode-banner');
+            if (!server.scheduler.enabled) {
+              devBanner.classList.remove('hidden');
+            } else {
+              devBanner.classList.add('hidden');
+            }
+          }
+
+          // 1. Order Broadcast
+          if (stats.orderBroadcast) {
+            document.getElementById('ob-success-count').innerText = stats.orderBroadcast.success;
+            document.getElementById('ob-failed-count').innerText = stats.orderBroadcast.failed;
+            document.getElementById('ob-pending-count').innerText = stats.orderBroadcast.pending;
+          }
+          document.getElementById('tab-ob-badge').innerText = (logs.orderBroadcast || []).length;
+
+          // 2. Vehicle Basic Info
+          if (stats.vehicleBasicInfo) {
+            document.getElementById('vbi-success-count').innerText = stats.vehicleBasicInfo.success;
+            document.getElementById('vbi-failed-count').innerText = stats.vehicleBasicInfo.failed;
+            document.getElementById('vbi-pending-count').innerText = stats.vehicleBasicInfo.pending;
+          }
+          document.getElementById('tab-vbi-badge').innerText = (logs.vehicleBasicInfo || []).length;
+
+          // 3. Vehicle Passing Point
+          if (stats.vehiclePassingPoint) {
+            document.getElementById('vpp-success-count').innerText = stats.vehiclePassingPoint.success;
+            document.getElementById('vpp-failed-count').innerText = stats.vehiclePassingPoint.failed;
+            document.getElementById('vpp-pending-count').innerText = stats.vehiclePassingPoint.pending;
+          }
+          document.getElementById('tab-vpp-badge').innerText = (logs.vehiclePassingPoint || []).length;
+
+          // 4. Vehicle Precise Traceability
+          if (stats.vehiclePreciseTraceability) {
+            document.getElementById('vpt-success-count').innerText = stats.vehiclePreciseTraceability.success;
+            document.getElementById('vpt-failed-count').innerText = stats.vehiclePreciseTraceability.failed;
+            document.getElementById('vpt-pending-count').innerText = stats.vehiclePreciseTraceability.pending;
+          }
+          document.getElementById('tab-vpt-badge').innerText = (logs.vehiclePreciseTraceability || []).length;
+
+          // 5. Vehicle Offline BOM
+          if (stats.vehicleOfflineBom) {
+            document.getElementById('vob-success-count').innerText = stats.vehicleOfflineBom.success;
+            document.getElementById('vob-failed-count').innerText = stats.vehicleOfflineBom.failed;
+            document.getElementById('vob-pending-count').innerText = stats.vehicleOfflineBom.pending;
+          }
+          document.getElementById('tab-vob-badge').innerText = (logs.vehicleOfflineBom || []).length;
+
+          // Logs State
+          currentLogs = logs;
+          renderLogsTable();
+        }
+      } catch (err) {
+        if (err.message !== 'Unauthorized') {
+          console.error('Error fetching dashboard summary:', err);
+        }
+      } finally {
+        if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        refreshIcons();
+      }
+    }
+
+    function switchTab(tabKey) {
+      activeTab = tabKey;
+      const tabs = ['ob', 'vbi', 'vpp', 'vpt', 'vob'];
+
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (!btn) return;
+        if (t === tabKey) {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-sm flex items-center gap-2';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-slate-700 text-slate-300 hover:bg-slate-600 flex items-center gap-2';
+        }
+      });
+
+      renderLogsTable();
+    }
+
+    function renderLogsTable() {
+      const tbody = document.getElementById('logs-table-body');
+      const headerRow = document.getElementById('logs-header-row');
+      const search = (document.getElementById('log-search-input').value || '').toLowerCase().trim();
+      const filter = document.getElementById('log-status-filter').value;
+
+      let rawLogs = [];
+      let endpointType = '';
+
+      if (activeTab === 'ob') {
+        rawLogs = currentLogs.orderBroadcast || [];
+        endpointType = 'order-broadcast';
+        headerRow.innerHTML = `
+          <th class="py-3 px-4">Last Attempt (GMT+7)</th>
+          <th class="py-3 px-4">VIN</th>
+          <th class="py-3 px-4">Plan ID</th>
+          <th class="py-3 px-4">GA Online Date</th>
+          <th class="py-3 px-4">Status</th>
+          <th class="py-3 px-4">EAI Response</th>
+          <th class="py-3 px-4 text-right">Actions</th>
+        `;
+      } else if (activeTab === 'vbi') {
+        rawLogs = currentLogs.vehicleBasicInfo || [];
+        endpointType = 'vehicle-basic-info';
+        headerRow.innerHTML = `
+          <th class="py-3 px-4">Last Attempt (GMT+7)</th>
+          <th class="py-3 px-4">VIN</th>
+          <th class="py-3 px-4">Vehicle Code / ID</th>
+          <th class="py-3 px-4">Feature Count</th>
+          <th class="py-3 px-4">Status</th>
+          <th class="py-3 px-4">EAI Response</th>
+          <th class="py-3 px-4 text-right">Actions</th>
+        `;
+      } else if (activeTab === 'vpp') {
+        rawLogs = currentLogs.vehiclePassingPoint || [];
+        endpointType = 'vehicle-passing-point';
+        headerRow.innerHTML = `
+          <th class="py-3 px-4">Last Attempt (GMT+7)</th>
+          <th class="py-3 px-4">VIN</th>
+          <th class="py-3 px-4">MO Number</th>
+          <th class="py-3 px-4">Handover Date</th>
+          <th class="py-3 px-4">Status</th>
+          <th class="py-3 px-4">EAI Response</th>
+          <th class="py-3 px-4 text-right">Actions</th>
+        `;
+      } else if (activeTab === 'vpt') {
+        rawLogs = currentLogs.vehiclePreciseTraceability || [];
+        endpointType = 'vehicle-precise-traceability';
+        headerRow.innerHTML = `
+          <th class="py-3 px-4">Last Attempt (GMT+7)</th>
+          <th class="py-3 px-4">VIN</th>
+          <th class="py-3 px-4">Keyparts Count</th>
+          <th class="py-3 px-4">Handover Date</th>
+          <th class="py-3 px-4">Status</th>
+          <th class="py-3 px-4">EAI Response</th>
+          <th class="py-3 px-4 text-right">Actions</th>
+        `;
+      } else if (activeTab === 'vob') {
+        rawLogs = currentLogs.vehicleOfflineBom || [];
+        endpointType = 'vehicle-offline-bom';
+        headerRow.innerHTML = `
+          <th class="py-3 px-4">Last Attempt (GMT+7)</th>
+          <th class="py-3 px-4">Material No / Part No</th>
+          <th class="py-3 px-4">ECU / Module</th>
+          <th class="py-3 px-4">BOM Version</th>
+          <th class="py-3 px-4">Status</th>
+          <th class="py-3 px-4">EAI Response</th>
+          <th class="py-3 px-4 text-right">Actions</th>
+        `;
+      }
+
+      // Filter Status & Search
+      let filtered = rawLogs.filter(row => {
+        if (filter !== 'ALL' && row.Status !== filter) return false;
+        if (search) {
+          const matchVin = (row.VIN || '').toLowerCase().includes(search);
+          const matchMsg = (row.ResponseMessage || '').toLowerCase().includes(search);
+          const matchPlan = (row.plan_ID || row.VehicleCode || row.moNum || row.TransmissionID || row.MaterialNo || row.PartNo || row.ECUName || '').toLowerCase().includes(search);
+          if (!matchVin && !matchMsg && !matchPlan) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-slate-500">
+              No transmission log entries match current filter criteria.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(row => {
+        const isSuccess = row.Status === 'SUCCESS';
+        const statusBadge = isSuccess
+          ? '<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">SUCCESS</span>'
+          : '<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30">FAILED</span>';
+
+        const respBadge = (row.ResponseStatus || '').toUpperCase() === 'S'
+          ? '<span class="text-emerald-400 font-bold">S</span>'
+          : '<span class="text-rose-400 font-bold">E</span>';
+
+        let col2Display = `<span class="font-mono font-semibold text-white">${row.VIN || '-'}</span>`;
+        let col3 = '-';
+        let col4 = '-';
+        let rowId = row.VIN;
+
+        if (activeTab === 'ob') {
+          col3 = row.plan_ID || '-';
+          col4 = row.GAOnline_Tpoint_ExactDate || '-';
+        } else if (activeTab === 'vbi') {
+          col3 = row.TransmissionID 
+            ? `<div>${row.VehicleCode || '-'}</div><div class="text-[10px] text-cyan-400 font-mono">ID: ${row.TransmissionID}</div>`
+            : (row.VehicleCode || '-');
+          col4 = `${row.FeatureCount || 0} features`;
+        } else if (activeTab === 'vpp') {
+          col3 = row.moNum || '-';
+          col4 = row.handover_tpoint_date || '-';
+        } else if (activeTab === 'vpt') {
+          col3 = `${row.KeypartCount || 0} parts`;
+          col4 = row.handover_tpoint_date || '-';
+        } else if (activeTab === 'vob') {
+          rowId = row.recordId || row.BOMRecordID || row.Auto_ID || row.LogID;
+          col2Display = `
+            <div>
+              <span class="font-bold text-white">${row.MaterialNo || '-'}</span>
+              <div class="text-[10px] text-slate-400 font-mono">Part: ${row.PartNo || '-'}</div>
+            </div>
+          `;
+          col3 = `<div class="font-semibold text-amber-300">${row.ECUName || '-'}</div><div class="text-[10px] text-slate-400 font-mono">Mod: ${row.moduleid || '00'}</div>`;
+          col4 = row.BOMVersion || 'v3.0';
+        }
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-3 px-4 font-mono text-slate-300 text-[11px]">${formatDateGMT7(row.LastAttemptAt)}</td>
+            <td class="py-3 px-4">${col2Display}</td>
+            <td class="py-3 px-4 font-mono text-slate-300">${col3}</td>
+            <td class="py-3 px-4 text-slate-300">${col4}</td>
+            <td class="py-3 px-4">${statusBadge}</td>
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-1.5">
+                ${respBadge}
+                <span class="text-slate-400 truncate max-w-xs block" title="${row.ResponseMessage || ''}">${row.ResponseMessage || '-'}</span>
+              </div>
+            </td>
+            <td class="py-3 px-4 text-right">
+              <div class="flex items-center justify-end gap-1.5">
+                <button onclick="viewPayload('${rowId}', '${endpointType}')" class="p-1 rounded hover:bg-slate-700 text-indigo-400 hover:text-indigo-300 transition" title="View Payload JSON">
+                  <i data-lucide="file-json" class="w-4 h-4"></i>
+                </button>
+                <button onclick="triggerSingleVinDirect('${rowId}', '${endpointType}')" class="p-1 rounded hover:bg-slate-700 text-slate-400 hover:text-white transition" title="Re-send Record">
+                  <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      refreshIcons();
+    }
+
+    /**
+     * Interface Detail & Scheduler Modal Logic
+     */
+    async function openInterfaceDetailModal(interfaceKey) {
+      activeDetailInterfaceKey = interfaceKey;
+      switchDetailTab('sql');
+
+      const modal = document.getElementById('interface-detail-modal');
+      modal.classList.remove('hidden');
+
+      try {
+        const res = await authFetch(`/api/scheduler/details/${interfaceKey}`);
+        const json = await res.json();
+
+        if (json.success && json.data) {
+          activeDetailData = json.data;
+          renderInterfaceModalData();
+        } else {
+          showToast('Error', 'Failed to fetch interface metadata.', true);
+        }
+      } catch (err) {
+        if (err.message !== 'Unauthorized') {
+          showToast('Error', 'Failed to load interface details.', true);
+        }
+      }
+    }
+
+    function closeInterfaceDetailModal() {
+      const modal = document.getElementById('interface-detail-modal');
+      modal.classList.add('hidden');
+    }
+
+    function switchDetailTab(tabName) {
+      activeDetailTab = tabName;
+      const tabs = ['sql', 'script', 'scheduler'];
+
+      tabs.forEach(t => {
+        const btn = document.getElementById(`btn-tab-${t}`);
+        const content = document.getElementById(`content-tab-${t}`);
+
+        if (t === tabName) {
+          btn.className = 'px-4 py-2 font-semibold border-b-2 border-indigo-500 text-indigo-400 flex items-center gap-2 transition';
+          content.classList.remove('hidden');
+        } else {
+          btn.className = 'px-4 py-2 font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition';
+          content.classList.add('hidden');
+        }
+      });
+
+      refreshIcons();
+    }
+
+    function renderInterfaceModalData() {
+      if (!activeDetailData) return;
+      const d = activeDetailData;
+
+      // Header
+      document.getElementById('detail-modal-title').innerText = d.title;
+      document.getElementById('detail-modal-code').innerText = d.name;
+      document.getElementById('detail-modal-desc').innerText = d.description;
+
+      // TAB 1: SQL Data Source
+      document.getElementById('detail-sql-trigger').innerText = d.triggerCondition || '-';
+      document.getElementById('detail-sql-brand').innerText = d.brandFilter || '-';
+
+      const tablesContainer = document.getElementById('detail-sql-tables');
+      tablesContainer.innerHTML = (d.tables || []).map(t => `
+        <div class="p-2.5 rounded-lg bg-slate-800/40 border border-slate-700/60 flex flex-col md:flex-row md:items-center justify-between gap-1">
+          <span class="font-mono font-bold text-sky-400">${t.name}</span>
+          <span class="text-slate-400 text-[11px]">${t.description}</span>
+        </div>
+      `).join('');
+
+      const sqlCode = (d.sqlQueries || []).map(q => `-- [${q.label}]\n${q.query}`).join('\n\n');
+      document.getElementById('detail-sql-code').innerText = sqlCode;
+
+      // TAB 2: View Script & Contract
+      document.getElementById('detail-script-endpoint').innerText = d.eaiEndpoint;
+      
+      const rulesList = document.getElementById('detail-script-rules');
+      rulesList.innerHTML = (d.transformationRules || []).map(r => `<li>${r}</li>`).join('');
+
+      document.getElementById('detail-script-payload').innerText = JSON.stringify(d.payloadSample, null, 2);
+
+      // TAB 3: Scheduler Job Config
+      const sched = d.schedule || { enabled: false, preset: 'shift_split', patterns: [] };
+      const isSchedActive = sched.enabled;
+
+      const toggleInput = document.getElementById('sched-toggle-input');
+      toggleInput.checked = isSchedActive;
+
+      const badge = document.getElementById('sched-status-badge');
+      const iconWrap = document.getElementById('sched-status-icon');
+      const infoText = document.getElementById('sched-status-info');
+
+      if (isSchedActive) {
+        badge.className = 'px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+        badge.innerText = 'ACTIVE';
+        iconWrap.className = 'p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400';
+        infoText.innerText = 'Running background synchronization automatically.';
+      } else {
+        badge.className = 'px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30';
+        badge.innerText = 'PAUSED';
+        iconWrap.className = 'p-2.5 rounded-xl bg-amber-500/10 text-amber-300';
+        infoText.innerText = 'Automatic schedule is paused. Trigger manual sync anytime.';
+      }
+
+      document.getElementById('sched-preset-select').value = sched.preset || 'shift_split';
+      renderPatternsInputs(sched.preset, sched.patterns);
+
+      document.getElementById('sched-last-run').innerText = sched.lastRun ? formatDateGMT7(sched.lastRun) : 'Never executed';
+      document.getElementById('sched-last-status').innerText = sched.lastStatus || '-';
+
+      refreshIcons();
+    }
+
+    function renderPatternsInputs(preset, patterns = []) {
+      const container = document.getElementById('sched-patterns-container');
+      const explanation = document.getElementById('sched-preset-explanation');
+
+      if (preset === 'shift_split') {
+        explanation.innerHTML = '<strong>Shift Pabrik:</strong> Antara jam 08:00 - 20:00 per 30 menit (<code>*/30 8-19 * * *</code>). Antara jam 20:00 - 08:00 per 1 jam (<code>0 20-23,0-7 * * *</code>).';
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+            <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400 block text-[10px] font-semibold">1. Shift Siang (08:00 - 20:00)</span>
+              <input type="text" id="pattern-input-0" value="*/30 8-19 * * *" class="w-full bg-transparent font-mono text-emerald-400 font-bold outline-none mt-1">
+            </div>
+            <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span class="text-slate-400 block text-[10px] font-semibold">2. Shift Malam (20:00 - 08:00)</span>
+              <input type="text" id="pattern-input-1" value="0 20-23,0-7 * * *" class="w-full bg-transparent font-mono text-emerald-400 font-bold outline-none mt-1">
+            </div>
+          </div>
+        `;
+      } else if (preset === 'every_30m') {
+        explanation.innerHTML = '<strong>Setiap 30 Menit:</strong> Menit 00 dan 30 sepanjang hari non-stop (<code>*/30 * * * *</code>).';
+        container.innerHTML = `
+          <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
+            <span class="text-slate-400 block text-[10px] font-semibold">Cron Pattern</span>
+            <input type="text" id="pattern-input-0" value="*/30 * * * *" class="w-full bg-transparent font-mono text-emerald-400 font-bold outline-none mt-1">
+          </div>
+        `;
+      } else if (preset === 'every_15m') {
+        explanation.innerHTML = '<strong>Setiap 15 Menit:</strong> Menit 00, 15, 30, 45 sepanjang hari (<code>*/15 * * * *</code>).';
+        container.innerHTML = `
+          <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
+            <span class="text-slate-400 block text-[10px] font-semibold">Cron Pattern</span>
+            <input type="text" id="pattern-input-0" value="*/15 * * * *" class="w-full bg-transparent font-mono text-emerald-400 font-bold outline-none mt-1">
+          </div>
+        `;
+      } else if (preset === 'every_1h') {
+        explanation.innerHTML = '<strong>Setiap 1 Jam:</strong> Setiap pergantian jam pada menit 00 (<code>0 * * * *</code>).';
+        container.innerHTML = `
+          <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
+            <span class="text-slate-400 block text-[10px] font-semibold">Cron Pattern</span>
+            <input type="text" id="pattern-input-0" value="0 * * * *" class="w-full bg-transparent font-mono text-emerald-400 font-bold outline-none mt-1">
+          </div>
+        `;
+      } else {
+        explanation.innerHTML = '<strong>Custom Cron:</strong> Masukkan satu atau lebih pola cron yang dipisahkan baris baru.';
+        const customValue = (patterns && patterns.length > 0) ? patterns.join('\n') : '*/30 * * * *';
+        container.innerHTML = `
+          <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
+            <span class="text-slate-400 block text-[10px] font-semibold">Custom Patterns (1 per line)</span>
+            <textarea id="pattern-custom-area" rows="2" class="w-full bg-transparent font-mono text-emerald-400 font-bold outline-none mt-1 resize-none">${customValue}</textarea>
+          </div>
+        `;
+      }
+    }
+
+    function handlePresetChange(e) {
+      const preset = e.target.value;
+      renderPatternsInputs(preset);
+    }
+
+    function handleScheduleToggle(e) {
+      const isChecked = e.target.checked;
+      const badge = document.getElementById('sched-status-badge');
+      const iconWrap = document.getElementById('sched-status-icon');
+      const infoText = document.getElementById('sched-status-info');
+
+      if (isChecked) {
+        badge.className = 'px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+        badge.innerText = 'ACTIVE';
+        iconWrap.className = 'p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400';
+        infoText.innerText = 'Running background synchronization automatically.';
+      } else {
+        badge.className = 'px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30';
+        badge.innerText = 'PAUSED';
+        iconWrap.className = 'p-2.5 rounded-xl bg-amber-500/10 text-amber-300';
+        infoText.innerText = 'Automatic schedule is paused. Trigger manual sync anytime.';
+      }
+      refreshIcons();
+    }
+
+    async function saveActiveScheduleConfig() {
+      if (!activeDetailInterfaceKey) return;
+      const btn = document.getElementById('btn-save-schedule');
+      btn.disabled = true;
+      btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i><span>Saving &amp; Reloading...</span>';
+      refreshIcons();
+
+      try {
+        const enabled = document.getElementById('sched-toggle-input').checked;
+        const preset = document.getElementById('sched-preset-select').value;
+        let patterns = [];
+
+        if (preset === 'shift_split') {
+          const p0 = (document.getElementById('pattern-input-0')?.value || '*/30 8-19 * * *').trim();
+          const p1 = (document.getElementById('pattern-input-1')?.value || '0 20-23,0-7 * * *').trim();
+          patterns = [p0, p1];
+        } else if (preset === 'custom') {
+          const area = document.getElementById('pattern-custom-area')?.value || '';
+          patterns = area.split('\n').map(s => s.trim()).filter(Boolean);
+        } else {
+          const p0 = (document.getElementById('pattern-input-0')?.value || '*/30 * * * *').trim();
+          patterns = [p0];
+        }
+
+        const res = await authFetch(`/api/scheduler/config/${activeDetailInterfaceKey}`, {
+          method: 'PUT',
+          body: JSON.stringify({
+            enabled,
+            preset,
+            patterns,
+          }),
+        });
+
+        const json = await res.json();
+
+        if (json.success) {
+          showToast('Schedule Updated', `Scheduler for ${activeDetailInterfaceKey} applied immediately!`);
+          loadDashboardData();
+          openInterfaceDetailModal(activeDetailInterfaceKey);
+        } else {
+          showToast('Failed', json.message || 'Error updating schedule', true);
+        }
+      } catch (err) {
+        if (err.message !== 'Unauthorized') {
+          showToast('Error', err.message || 'Network error updating schedule', true);
+        }
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i><span>Save &amp; Apply Schedule (No Server Restart Required)</span>';
+        refreshIcons();
+      }
+    }
+
+    function copyActiveSqlQuery() {
+      const code = document.getElementById('detail-sql-code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btnText = document.getElementById('copy-sql-text');
+        btnText.innerText = 'Copied!';
+        setTimeout(() => btnText.innerText = 'Copy SQL', 2000);
+      });
+    }
+
+    function copySamplePayloadJson() {
+      const code = document.getElementById('detail-script-payload').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btnText = document.getElementById('copy-sample-text');
+        btnText.innerText = 'Copied!';
+        setTimeout(() => btnText.innerText = 'Copy Sample', 2000);
+      });
+    }
+
+    /**
+     * Payload Modal Logic
+     */
+    async function viewPayload(identifier, endpoint) {
+      activeModalVin = identifier;
+      activeModalEndpoint = endpoint;
+
+      const modal = document.getElementById('payload-modal');
+      const vinDisplay = document.getElementById('modal-vin-display');
+      const badgeInterface = document.getElementById('modal-interface-badge');
+      const codeBox = document.getElementById('modal-json-content');
+
+      vinDisplay.innerText = endpoint === 'vehicle-offline-bom' ? `Record ID: ${identifier}` : identifier;
+      badgeInterface.innerText = endpoint === 'order-broadcast' 
+        ? 'Order Broadcast' 
+        : endpoint === 'vehicle-basic-info'
+          ? 'Vehicle Basic Info'
+          : endpoint === 'vehicle-passing-point'
+            ? 'Vehicle Passing Point'
+            : endpoint === 'vehicle-precise-traceability'
+              ? 'Precise Traceability'
+              : 'Vehicle Offline BOM';
+
+      codeBox.innerText = 'Fetching JSON payload...';
+      modal.classList.remove('hidden');
+
+      try {
+        const res = await authFetch(`/api/${endpoint}/payload/${identifier}`);
+        const json = await res.json();
+
+        if (json.success && json.data) {
+          const { log, payload } = json.data;
+
+          document.getElementById('modal-resp-status').innerText = (log?.ResponseStatus || '-');
+          document.getElementById('modal-resp-message').innerText = (log?.ResponseMessage || '-');
+          document.getElementById('modal-resp-time').innerText = formatDateGMT7(log?.LastAttemptAt);
+
+          const statusBadge = document.getElementById('modal-status-badge');
+          if (log?.Status === 'SUCCESS') {
+            statusBadge.className = 'px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+            statusBadge.innerText = 'SUCCESS';
+          } else {
+            statusBadge.className = 'px-2 py-0.5 text-[10px] font-bold rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30';
+            statusBadge.innerText = 'FAILED';
+          }
+
+          codeBox.innerText = JSON.stringify(payload || {}, null, 2);
+        } else {
+          codeBox.innerText = '// No payload data available for this record.';
+        }
+      } catch (err) {
+        if (err.message !== 'Unauthorized') {
+          codeBox.innerText = `// Error fetching payload: ${err.message}`;
+        }
+      }
+    }
+
+    function closePayloadModal() {
+      document.getElementById('payload-modal').classList.add('hidden');
+    }
+
+    function copyModalJson() {
+      const code = document.getElementById('modal-json-content').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.innerText = 'Copied!';
+        setTimeout(() => btnText.innerText = 'Copy JSON', 2000);
+      });
+    }
+
+    async function resendFromModal() {
+      if (!activeModalVin || !activeModalEndpoint) return;
+      closePayloadModal();
+      await triggerSingleVinDirect(activeModalVin, activeModalEndpoint);
+    }
+
+    /**
+     * Sync Trigger Actions
+     */
+    async function triggerBatchSync(endpoint) {
+      const interfaceName = endpoint === 'order-broadcast' 
+        ? 'Order Broadcast' 
+        : endpoint === 'vehicle-basic-info'
+          ? 'Vehicle Basic Info'
+          : endpoint === 'vehicle-passing-point'
+            ? 'Vehicle Passing Point'
+            : endpoint === 'vehicle-precise-traceability'
+              ? 'Precise Traceability'
+              : 'Vehicle Offline BOM';
+
+      const processingMsg = endpoint === 'vehicle-offline-bom'
+        ? 'Syncing pending units (all BOM rows per VIN)...'
+        : `Syncing up to 50 records for ${interfaceName}...`;
+      showToast('Processing Batch', processingMsg);
+
+      try {
+        const res = await authFetch(`/api/${endpoint}/sync`, { method: 'POST' });
+        const json = await res.json();
+
+        if (json.success && json.data) {
+          const d = json.data;
+          showToast(
+            'Batch Completed',
+            `${interfaceName}: ${d.successCount} succeeded, ${d.failureCount} failed out of ${d.totalProcessed}.`
+          );
+        } else {
+          showToast('Sync Warning', json.message || 'Batch returned with issues.', true);
+        }
+        loadDashboardData();
+      } catch (err) {
+        if (err.message !== 'Unauthorized') {
+          showToast('Sync Failed', err.message || 'Network error triggering batch.', true);
+        }
+      }
+    }
+
+    async function triggerSingleVinSync(endpoint) {
+      let inputId = 'ob-single-vin-input';
+      if (endpoint === 'vehicle-basic-info') inputId = 'vbi-single-vin-input';
+      if (endpoint === 'vehicle-passing-point') inputId = 'vpp-single-vin-input';
+      if (endpoint === 'vehicle-precise-traceability') inputId = 'vpt-single-vin-input';
+      if (endpoint === 'vehicle-offline-bom') inputId = 'vob-single-id-input';
+
+      const vinInput = document.getElementById(inputId);
+      const val = (vinInput.value || '').trim();
+
+      if (!val) {
+        showToast('Input Required', endpoint === 'vehicle-offline-bom' ? 'Please enter a valid Record ID.' : 'Please enter a valid VIN number.', true);
+        return;
+      }
+
+      await triggerSingleVinDirect(val, endpoint);
+      vinInput.value = '';
+    }
+
+    async function triggerSingleVinDirect(identifier, endpoint) {
+      const labelType = endpoint === 'vehicle-offline-bom' ? 'Record ID' : 'VIN';
+      showToast('Transmitting Record', `Sending ${labelType} [${identifier}] to MuleSoft EAI...`);
+
+      try {
+        const res = await authFetch(`/api/${endpoint}/sync/${identifier}`, { method: 'POST' });
+        const json = await res.json();
+
+        if (json.success) {
+          showToast('Transmission Succeeded', `${labelType} [${identifier}] accepted by EAI: ${json.message || 'OK'}`);
+        } else {
+          showToast('Transmission Failed', `${labelType} [${identifier}] rejected: ${json.message || 'EAI error'}`, true);
+        }
+        loadDashboardData();
+      } catch (err) {
+        if (err.message !== 'Unauthorized') {
+          showToast('Network Error', err.message || 'Failed to contact sync service.', true);
+        }
+      }
+    }
+
+    // Auto Refresh Lifecycle
+    function setupAutoRefresh() {
+      const toggle = document.getElementById('auto-refresh-toggle');
+      toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+          startRefreshInterval();
+          showToast('Auto Refresh Enabled', 'Dashboard refreshes every 10 seconds.');
+        } else {
+          stopRefreshInterval();
+          showToast('Auto Refresh Paused', 'Manual refresh only.');
+        }
+      });
+
+      startRefreshInterval();
+    }
+
+    function startRefreshInterval() {
+      stopRefreshInterval();
+      refreshTimer = setInterval(() => {
+        loadDashboardData();
+      }, 10000);
+    }
+
+    function stopRefreshInterval() {
+      if (refreshTimer) {
+        clearInterval(refreshTimer);
+        refreshTimer = null;
+      }
+    }
+
+    // Initialize application
+    window.addEventListener('DOMContentLoaded', async () => {
+      refreshIcons();
+      const isAuth = await checkAuthSession();
+      if (isAuth) {
+        loadDashboardData();
+        setupAutoRefresh();
+      }
+    });
+  </script>
+</body>
+</html>

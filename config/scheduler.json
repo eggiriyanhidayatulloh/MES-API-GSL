@@ -1,0 +1,55 @@
+{
+  "globalEnabled": false,
+  "interfaces": {
+    "order-broadcast": {
+      "enabled": true,
+      "name": "Order Broadcast",
+      "preset": "shift_split",
+      "patterns": [
+        "*/30 8-19 * * *",
+        "0 20-23,0-7 * * *"
+      ],
+      "description": "Shift Siang (08:00 - 20:00) per 30 Menit, Shift Malam (20:00 - 08:00) per 1 Jam"
+    },
+    "vehicle-basic-info": {
+      "enabled": true,
+      "name": "Vehicle Basic Info",
+      "preset": "shift_split",
+      "patterns": [
+        "*/30 8-19 * * *",
+        "0 20-23,0-7 * * *"
+      ],
+      "description": "Shift Siang (08:00 - 20:00) per 30 Menit, Shift Malam (20:00 - 08:00) per 1 Jam"
+    },
+    "vehicle-passing-point": {
+      "enabled": true,
+      "name": "Vehicle Passing Point",
+      "preset": "shift_split",
+      "patterns": [
+        "*/30 8-19 * * *",
+        "0 20-23,0-7 * * *"
+      ],
+      "description": "Shift Siang (08:00 - 20:00) per 30 Menit, Shift Malam (20:00 - 08:00) per 1 Jam"
+    },
+    "vehicle-precise-traceability": {
+      "enabled": true,
+      "name": "Vehicle Precise Traceability",
+      "preset": "shift_split",
+      "patterns": [
+        "*/30 8-19 * * *",
+        "0 20-23,0-7 * * *"
+      ],
+      "description": "Shift Siang (08:00 - 20:00) per 30 Menit, Shift Malam (20:00 - 08:00) per 1 Jam"
+    },
+    "vehicle-offline-bom": {
+      "enabled": false,
+      "name": "Vehicle Offline BOM",
+      "preset": "shift_split",
+      "patterns": [
+        "*/30 8-19 * * *",
+        "0 20-23,0-7 * * *"
+      ],
+      "description": "Shift Siang (08:00 - 20:00) per 30 Menit, Shift Malam (20:00 - 08:00) per 1 Jam (Nonaktif sementara)"
+    }
+  }
+}
